@@ -1,22 +1,19 @@
-#include <iostream>
+#include "Resource.h"
+#include "AutoPtr.h"
 
-using std::cout; using std::endl;
-
-struct Point
-{
-    int x, y;
-};
-
-Point p = { 1, 2 };
-
-Point foo()
-{
-    return p;
-}
-// 리턴용 임시객체를 만들어 리턴한다.
+using std::cout;
+using std::endl;
 
 int main()
 {
-    foo().x = 10;
-    cout << p.x << endl;
+	AutoPtr<Resource> res1(new Resource(1000000));
+
+	cout << &res1 << endl;
+
+	AutoPtr<Resource> res2(res1);
+
+	cout << &res1 << endl;
+	cout << &res2 << endl;
+
+
 }
