@@ -4,6 +4,7 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include <atomic>
 
 using namespace std;
 
@@ -12,40 +13,38 @@ mutex mtx;
 int main() 
 {
 
-	//const int num_pro = std::thread::hardware_concurrency();
+	//atomic<int> shared_memory(0);
+	int shared_memory(0);
 
-	//cout << std::this_thread::get_id() << endl;
-
-	//vector<std::thread> my_threads;
-	//my_threads.resize(num_pro);
-	//
-	//// cpu usage 100%
-	//for (auto &e : my_threads)
-	//	e = std::thread([]() {
-	//			cout << std::this_thread::get_id() << endl;
-	//			while (true) {} } );
-
-	//for (auto& e : my_threads)
-	//	e.join();
-
-	// lambda function
-	auto work_func=[](const string & name)
-	{
-		for (int i = 0; i < 5; ++i)
+	auto count_func = [&] () {
+		for (int i = 0; i < 1000; ++i) 
 		{
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			this_thread::sleep_for(chrono::milliseconds(1));
 
-			mtx.lock();
-			cout << name << " " << std::this_thread::get_id() << "is working " << i << endl;
-			mtx.unlock();
+			///*using lock and unlock */
+			//mtx.lock();
+			//shared_memory++;
+			//mtx.unlock();
+
+			///*using lock_guard */
+			//std::lock_guard<std::mutex> lock(mtx);
+			//shared_memory++;
+
+			/*using scoped_lock (c++17)*/
+			std::scoped_lock lock(mtx); 
+			shared_memory++;
+
 		}
 	};
 
-	std::thread t1 = std::thread(work_func, "name1");
-	std::thread t2 = std::thread(work_func, "name2");
+	thread t1 = std::thread(count_func);
+	thread t2 = std::thread(count_func);
 
 	t1.join();
 	t2.join();
+
+	cout << "After" << endl;
+	cout << shared_memory << endl;
 
 	return 0;
 }
