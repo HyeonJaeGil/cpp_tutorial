@@ -5,6 +5,7 @@
 using std::cout;
 using std::endl;
 
+/*
 int main()
 {
 	// AutoPtr<Resource> res1(new Resource(1000000));
@@ -26,3 +27,4 @@ int main()
 
 
 }
+*/
