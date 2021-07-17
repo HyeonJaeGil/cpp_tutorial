@@ -6,7 +6,8 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
-#include <memory>
+#include <future>
+#include <execution>
 
 extern std::mutex mtx;
 
@@ -34,6 +35,18 @@ void dotProductAtomic(const std::vector<int>& v0, const std::vector<int>& v1,
 	for (unsigned i = i_start; i < i_end; ++i)
 		sum += v0[i] * v1[i];
 }
+
+auto dotProductFuture(const std::vector<int>& v0, const std::vector<int>& v1,
+	const unsigned i_start, const unsigned i_end)
+{
+	int sum = 0;
+	for (unsigned int i = i_start; i < i_end; ++i) 
+	{
+		sum += v0[i] * v1[i];
+	}
+	return sum;
+}
+
 
 int main() 
 {
@@ -134,5 +147,41 @@ int main()
 		std::cout << sum << std::endl;
 		std::cout << std::endl;
 	}
+
+	std::cout << "Future" << std::endl;
+	{
+		const  auto sta = std::chrono::steady_clock::now();
+		unsigned long long sum = 0;
+
+		std::vector<std::future<int>> futures;
+		futures.resize(n_threads);
+
+		const unsigned n_per_thread = n_data / n_threads;
+		for (unsigned t = 0; t < n_threads; t++)
+		{
+			futures[t] = std::async(dotProductFuture, std::ref(v0), std::ref(v1), t * n_per_thread, (t + 1) * n_per_thread);
+		}
+		for (unsigned t = 0; t < n_threads; t++)
+			sum += futures[t].get();
+
+		const std::chrono::duration<double> dur = std::chrono::steady_clock::now() - sta;
+
+		std::cout << dur.count() << std::endl;
+		std::cout << sum << std::endl;
+		std::cout << std::endl;
+	}
+
+	std::cout << "std::transform_reduce" << std::endl;
+	{
+		const  auto sta = std::chrono::steady_clock::now();
+		const auto sum = std::transform_reduce(std::execution::par, v0.begin(), v0.end(), v1.begin(), 0ull);
+
+		const std::chrono::duration<double> dur = std::chrono::steady_clock::now() - sta;
+
+		std::cout << dur.count() << std::endl;
+		std::cout << sum << std::endl;
+		std::cout << std::endl;
+	}
+
 	return 0;
 };
