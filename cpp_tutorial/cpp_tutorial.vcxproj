@@ -145,13 +145,17 @@
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp17</LanguageStandard>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_template.cpp" />
+    <ClCompile Include="main_template_class.cpp" />
     <ClCompile Include="thread.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoPtr.h" />
+    <ClInclude Include="myArray.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
