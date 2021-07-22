@@ -33,6 +33,9 @@
     <ClCompile Include="main_template_class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="inheritance_main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoPtr.h">
@@ -45,6 +48,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Teacher.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

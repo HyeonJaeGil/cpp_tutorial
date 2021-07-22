@@ -144,6 +144,7 @@
     <ClCompile Include="dot_product.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp17</LanguageStandard>
     </ClCompile>
+    <ClCompile Include="inheritance_main.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_template.cpp" />
     <ClCompile Include="main_template_class.cpp" />
@@ -154,8 +155,11 @@
   <ItemGroup>
     <ClInclude Include="AutoPtr.h" />
     <ClInclude Include="myArray.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Storage.h" />
+    <ClInclude Include="Student.h" />
+    <ClInclude Include="Teacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

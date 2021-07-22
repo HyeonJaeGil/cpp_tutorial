@@ -17,7 +17,7 @@ char getMax(char x, char y)
 }
 
 
-int main()
+/*int main()
 {
 	std::cout << getMax('a', 'b') << std::endl;
 
@@ -26,4 +26,4 @@ int main()
 
 	intValue.print();
 	doubleValue.print();
-}
+}*/
