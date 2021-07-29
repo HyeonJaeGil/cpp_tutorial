@@ -151,6 +151,7 @@
     <ClCompile Include="thread.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
     </ClCompile>
+    <ClCompile Include="virtual_basic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoPtr.h" />

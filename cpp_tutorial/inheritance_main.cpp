@@ -65,24 +65,24 @@ public:
 };
 
 
-int main() {
-
-	Derived_public D1;
-	Derived_protected D2;
-	Derived_private D3;
-	Derived_Derived_private D4;
-
-	D1.m_public;	
-	D1.m_protected; // OK thanks to using Base::m_protected in the public:  section of Derived_public.
-	// D1.getPublicValue(); // error because of "delete"
-	D1.Base::getProtectedValue();
-	D1.getPrivateValue();
-
-	//D2.Base::getProtectedValue();
-
-	//D2.m_public;
-	// D3.m_public;
-	// D4.m_public;
-
-	return 0;
-}
+//int main() {
+//
+//	Derived_public D1;
+//	Derived_protected D2;
+//	Derived_private D3;
+//	Derived_Derived_private D4;
+//
+//	D1.m_public;	
+//	D1.m_protected; // OK thanks to using Base::m_protected in the public:  section of Derived_public.
+//	// D1.getPublicValue(); // error because of "delete"
+//	D1.Base::getProtectedValue();
+//	D1.getPrivateValue();
+//
+//	//D2.Base::getProtectedValue();
+//
+//	//D2.m_public;
+//	// D3.m_public;
+//	// D4.m_public;
+//
+//	return 0;
+//}
