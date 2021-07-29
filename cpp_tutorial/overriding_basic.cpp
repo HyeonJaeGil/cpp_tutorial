@@ -18,16 +18,16 @@ public:
 
 };
 
-int main() {
-
-	A a;
-	B b;
-
-	A& ref = b;
-	b.getThis()->print(1);
-	ref.getThis()->print(2);
-
-	return 0;
-}
+//int main() {
+//
+//	A a;
+//	B b;
+//
+//	A& ref = b;
+//	b.getThis()->print(1);
+//	ref.getThis()->print(2);
+//
+//	return 0;
+//}
 
 

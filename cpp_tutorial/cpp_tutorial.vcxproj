@@ -149,6 +149,7 @@
     <ClCompile Include="main_template.cpp" />
     <ClCompile Include="main_template_class.cpp" />
     <ClCompile Include="overriding_basic.cpp" />
+    <ClCompile Include="reference_wrapper.cpp" />
     <ClCompile Include="thread.cpp">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp17</LanguageStandard>
     </ClCompile>
