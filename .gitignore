@@ -368,3 +368,6 @@ FodyWeavers.xsd
 **/build
 
 #############################################################
+
+*.vcxproj
+*vcxproj.filters
